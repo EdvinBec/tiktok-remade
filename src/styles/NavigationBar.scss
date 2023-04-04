@@ -1,1 +1,15 @@
 @import "./globals.scss";
+
+nav {
+  //TikTok Logo
+  .homeLogoButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    .fullSizeLogo {
+      width: 118px;
+      height: 42px;
+    }
+  }
+}
