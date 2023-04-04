@@ -48,4 +48,8 @@ $searchBarBackgroundColor: #1618230f;
   .searchButton:hover {
     background-color: rgba($darkGray, $alpha: 0.06);
   }
+
+  .searchButton:focus {
+    outline: 1px solid rgba($darkGray, $alpha: 0.2);
+  }
 }
