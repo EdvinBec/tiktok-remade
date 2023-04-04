@@ -1,0 +1,28 @@
+@import "./globals.scss";
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+
+  //TikTok Logo
+  .homeLogoButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    .fullSizeLogo {
+      width: 118px;
+      height: 42px;
+    }
+  }
+
+  .searchBar {
+    width: 30%;
+  }
+
+  .actionButtons {
+    min-width: 250px;
+  }
+}
