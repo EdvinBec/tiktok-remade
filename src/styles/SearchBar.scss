@@ -1,0 +1,51 @@
+@import "./globals.scss";
+
+$searchBarBackgroundColor: #1618230f;
+
+.searchBarContainer {
+  min-width: 250px;
+  width: 100%;
+  height: 45px;
+  border-radius: 22px;
+  background-color: $searchBarBackgroundColor;
+
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 85%;
+    height: 95%;
+    border: none;
+    background: none;
+    border-radius: 22px 0 0px 22px;
+    padding: 0 1rem;
+    color: rgba($darkGray, $alpha: 0.7);
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  input:focus {
+    outline: 1px solid rgba($darkGray, $alpha: 0.2);
+  }
+
+  .divider {
+    width: 1px;
+    height: 70%;
+    background-color: rgba($darkGray, $alpha: 0.2);
+  }
+
+  .searchButton {
+    background: none;
+    width: 15%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 22px 22px 0;
+    transition: ease-in-out 0.1s;
+  }
+
+  .searchButton:hover {
+    background-color: rgba($darkGray, $alpha: 0.06);
+  }
+}

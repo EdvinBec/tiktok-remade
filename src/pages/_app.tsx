@@ -1,5 +1,6 @@
 import "@/styles/globals.scss";
 import "@/styles/NavigationBar.scss";
+import "@/styles/SearchBar.scss";
 
 import type { AppProps } from "next/app";
 
