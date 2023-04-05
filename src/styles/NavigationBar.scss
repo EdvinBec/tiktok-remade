@@ -12,7 +12,7 @@ nav {
     background: none;
     border: none;
     cursor: pointer;
-    width: 20%;
+    width: 10%;
 
     .fullSizeLogo {
       width: 118px;
@@ -26,9 +26,24 @@ nav {
 
   .actionButtons {
     min-width: 250px;
-    width: 20%;
+    width: 10%;
     display: flex;
     gap: 1rem;
     justify-content: center;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .searchBar {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    .homeLogoButton {
+      .fullSizeLogo {
+        width: 98px;
+        height: auto;
+      }
+    }
   }
 }
