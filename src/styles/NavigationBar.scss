@@ -11,6 +11,7 @@ nav {
     background: none;
     border: none;
     cursor: pointer;
+    width: 20%;
 
     .fullSizeLogo {
       width: 118px;
@@ -24,5 +25,9 @@ nav {
 
   .actionButtons {
     min-width: 250px;
+    width: 20%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
   }
 }
