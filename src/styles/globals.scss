@@ -8,3 +8,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+//Layout
+.layout {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.inline {
+  display: flex;
+  height: 100%;
+}
