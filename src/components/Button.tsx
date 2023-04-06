@@ -11,6 +11,7 @@ type Props = {
   borderRadius?: number;
   color?: string;
   width?: string;
+  marginTop?: number;
 };
 
 const Button = ({
@@ -23,11 +24,13 @@ const Button = ({
   borderRadius,
   color,
   width,
+  marginTop,
 }: Props) => {
   return (
     <div
       className="buttonContainer"
       style={{
+        marginTop: marginTop + "rem",
         backgroundColor: fill,
         borderColor: outlineColor,
         borderWidth: outlineWidth + "px",

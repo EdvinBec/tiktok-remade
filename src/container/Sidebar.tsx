@@ -9,6 +9,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
+import LoginPopup from "@/components/LoginPopup";
 
 type Props = {};
 
@@ -53,12 +54,17 @@ const SuggestedAccounts = [
 ];
 
 const Sidebar = (props: Props) => {
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
 
-  const [btnColor, setBtnColor] = useState("#000");
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const router = useRouter();
 
   return (
     <div className="sidebarContainer">
+      <LoginPopup showModal={showModal} handleClose={handleClose} />
       <div className="navigationButtons">
         {SidebarButtons.map((item, itemIdx) => {
           return (
@@ -83,6 +89,7 @@ const Sidebar = (props: Props) => {
           color="#fe2c55"
           width="70%"
           borderRadius={4}
+          onClick={() => setShowModal(true)}
         />
       </div>
       <div className="suggestedAccounts">

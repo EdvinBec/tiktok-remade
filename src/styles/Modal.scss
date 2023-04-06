@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;
+  width: 28rem;
+  height: 20rem;
+  z-index: 1040;
+  top: 20%;
+  left: 35%;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+
+  div {
+    width: 90%;
+    gap: 1rem;
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 0.2px;
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 1040;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+}
