@@ -10,6 +10,7 @@ type Props = {
   outlineWidth?: number;
   borderRadius?: number;
   color?: string;
+  width?: string;
 };
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   outlineWidth,
   borderRadius,
   color,
+  width,
 }: Props) => {
   return (
     <div
@@ -31,6 +33,7 @@ const Button = ({
         borderWidth: outlineWidth + "px",
         borderRadius: borderRadius + "px",
         color: color,
+        width: width,
       }}
       onClick={onClick}
     >

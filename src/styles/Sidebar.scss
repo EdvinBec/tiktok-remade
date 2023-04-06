@@ -1,7 +1,7 @@
 @import "./globals.scss";
 
 .sidebarContainer {
-  width: 14rem;
+  width: 16rem;
   height: 100%;
 
   .navigationButtons {
@@ -28,6 +28,40 @@
 
     button:hover {
       background-color: rgba($darkGray, $alpha: 0.05);
+    }
+  }
+
+  .loginSection {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba($darkGray, $alpha: 0.1);
+
+    p {
+      width: 90%;
+      font-size: 16px;
+      color: rgba($darkGray, $alpha: 0.6);
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .sidebarContainer {
+    width: 4rem;
+    border-right: 1px solid rgba($darkGray, $alpha: 0.1);
+
+    .navigationButtons {
+      button {
+        .isVisible {
+          display: none;
+        }
+      }
+    }
+
+    .loginSection {
+      display: none;
     }
   }
 }
