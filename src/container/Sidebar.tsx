@@ -6,6 +6,9 @@ import LiveIcon from "../assets/img/Sidebar/LiveIcon.svg";
 import ZigaProfilePicture from "../assets/img//zigaProfilePicture.jpeg";
 import EdvinProfilePicture from "../assets/img/EdvinProfilePicture.jpeg";
 import Button from "@/components/Button";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useEffect } from "react";
 
 type Props = {};
 
@@ -14,16 +17,19 @@ const SidebarButtons = [
     label: "For You",
     icon: HomeIcon,
     alt: "For You",
+    path: "/",
   },
   {
     label: "Following",
     icon: PeopleIcon,
     alt: "Following",
+    path: "/following",
   },
   {
     label: "LIVE",
     icon: LiveIcon,
     alt: "Live",
+    path: "/live",
   },
 ];
 
@@ -47,13 +53,23 @@ const SuggestedAccounts = [
 ];
 
 const Sidebar = (props: Props) => {
+  const router = useRouter();
+
+  const [btnColor, setBtnColor] = useState("#000");
+
   return (
     <div className="sidebarContainer">
       <div className="navigationButtons">
         {SidebarButtons.map((item, itemIdx) => {
           return (
-            <button key={itemIdx}>
-              <Image src={item.icon} alt={item.alt} />
+            <button
+              key={itemIdx}
+              onClick={() => {
+                router.push(item.path);
+              }}
+              className={`${router.asPath === item.path && "selected"}`}
+            >
+              <Image src={item.icon} alt={item.alt} className="navIcon" />
               <div className="isVisible"> {item.label}</div>
             </button>
           );

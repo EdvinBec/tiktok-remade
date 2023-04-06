@@ -29,6 +29,15 @@
     button:hover {
       background-color: rgba($darkGray, $alpha: 0.05);
     }
+
+    .selected {
+      color: $accentColor;
+
+      .navIcon {
+        filter: invert(33%) sepia(64%) saturate(5250%) hue-rotate(332deg)
+          brightness(101%) contrast(101%);
+      }
+    }
   }
 
   .loginSection {
