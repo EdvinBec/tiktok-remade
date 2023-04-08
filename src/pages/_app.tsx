@@ -1,3 +1,4 @@
+//Style imports
 import "@/styles/globals.scss";
 import "@/styles/NavigationBar.scss";
 import "@/styles/SearchBar.scss";
@@ -6,6 +7,7 @@ import "@/styles/Sidebar.scss";
 import "@/styles/Sidebar.scss";
 import "@/styles/Modal.scss";
 
+//Components
 import type { AppProps } from "next/app";
 import Layout from "@/components/Layout";
 import NavigationBar from "@/container/NavigationBar";

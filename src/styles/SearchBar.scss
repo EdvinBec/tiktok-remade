@@ -23,10 +23,10 @@ $searchBarBackgroundColor: #1618230f;
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
     font-weight: 500;
-  }
 
-  input:focus {
-    outline: 1px solid rgba($darkGray, $alpha: 0.2);
+    &:focus {
+      outline: 1px solid rgba($darkGray, $alpha: 0.2);
+    }
   }
 
   .divider {
@@ -43,13 +43,13 @@ $searchBarBackgroundColor: #1618230f;
     cursor: pointer;
     border-radius: 0 22px 22px 0;
     transition: ease-in-out 0.1s;
-  }
 
-  .searchButton:hover {
-    background-color: rgba($darkGray, $alpha: 0.06);
-  }
+    &:hover {
+      background-color: rgba($darkGray, $alpha: 0.06);
+    }
 
-  .searchButton:focus {
-    outline: 1px solid rgba($darkGray, $alpha: 0.2);
+    &:focus {
+      outline: 1px solid rgba($darkGray, $alpha: 0.2);
+    }
   }
 }

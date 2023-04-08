@@ -1,9 +1,12 @@
+//Components
 import React, { useState } from "react";
 import { Modal } from "react-overlays";
-import GoogleIcon from "../assets/img/Google.svg";
-import TwitterIcon from "../assets/img/TwitterIcon.svg";
-import FacebookIcon from "../assets/img/FacebookIcon.svg";
 import Button from "./Button";
+
+//Image
+import GoogleIcon from "../assets/img/Google.svg";
+
+//Functions
 import { initFirebase } from "../../firebaseApp";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 

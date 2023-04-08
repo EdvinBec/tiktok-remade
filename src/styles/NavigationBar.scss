@@ -24,6 +24,7 @@ nav {
     width: 40%;
   }
 
+  //Upload and login buttons
   .actionButtons {
     min-width: 250px;
     width: 10%;
@@ -32,6 +33,7 @@ nav {
     justify-content: center;
   }
 
+  //Buttons that are shown, if the user is signed in
   .profileInfo {
     display: flex;
     align-items: center;
