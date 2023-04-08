@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 import LoginPopup from "@/components/LoginPopup";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 type Props = {};
 
@@ -54,13 +56,19 @@ const SuggestedAccounts = [
 ];
 
 const Sidebar = (props: Props) => {
+  const router = useRouter();
+  const auth = getAuth();
+
   const [showModal, setShowModal] = useState(false);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <div></div>;
+  }
 
   const handleClose = () => {
     setShowModal(false);
   };
-
-  const router = useRouter();
 
   return (
     <div className="sidebarContainer">
@@ -81,17 +89,19 @@ const Sidebar = (props: Props) => {
           );
         })}
       </div>
-      <div className="loginSection">
-        <p>Log in to follow creators, like videos, and view comments.</p>
-        <Button
-          label="Log in"
-          outlineColor="#fe2c55"
-          color="#fe2c55"
-          width="70%"
-          borderRadius={4}
-          onClick={() => setShowModal(true)}
-        />
-      </div>
+      {!user && (
+        <div className="loginSection">
+          <p>Log in to follow creators, like videos, and view comments.</p>
+          <Button
+            label="Log in"
+            outlineColor="#fe2c55"
+            color="#fe2c55"
+            width="70%"
+            borderRadius={4}
+            onClick={() => setShowModal(true)}
+          />
+        </div>
+      )}
       <div className="suggestedAccounts">
         <p className="hide">Suggested accounts</p>
         {SuggestedAccounts.map((item, itemIdx) => {

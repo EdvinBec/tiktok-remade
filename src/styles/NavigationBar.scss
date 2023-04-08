@@ -32,6 +32,46 @@ nav {
     justify-content: center;
   }
 
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    .iconButton {
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .messages {
+        width: 32px;
+        height: 24px;
+      }
+    }
+
+    .profileAvatar {
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+    }
+  }
+
   @media only screen and (max-width: 750px) {
     .searchBar {
       display: none;
