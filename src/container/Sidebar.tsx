@@ -10,12 +10,13 @@ import LoginPopup from "@/components/LoginPopup";
 import HomeIcon from "../assets/img/Sidebar/HomeIcon.svg";
 import PeopleIcon from "../assets/img/Sidebar/PeopleIcon.svg";
 import LiveIcon from "../assets/img/Sidebar/LiveIcon.svg";
-import ZigaProfilePicture from "../assets/img//zigaProfilePicture.jpeg";
-import EdvinProfilePicture from "../assets/img/EdvinProfilePicture.jpeg";
 
 //Functions
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection } from "firebase/firestore";
+import { db } from "../../firebaseApp";
 
 type Props = {};
 
@@ -40,32 +41,14 @@ const SidebarButtons = [
   },
 ];
 
-//Suggested accounts that are shown in the sidebar
-const SuggestedAccounts = [
-  {
-    username: "zigav",
-    picture: ZigaProfilePicture,
-  },
-  {
-    username: "edvin160",
-    picture: EdvinProfilePicture,
-  },
-  {
-    username: "zigav",
-    picture: ZigaProfilePicture,
-  },
-  {
-    username: "edvin160",
-    picture: EdvinProfilePicture,
-  },
-];
-
 const Sidebar = (props: Props) => {
   const router = useRouter();
   const auth = getAuth();
 
   const [showModal, setShowModal] = useState(false);
   const [user, loading] = useAuthState(auth); //State, that checks if the user is signed in
+
+  const [values, error] = useCollectionData<any>(collection(db, "users"));
 
   if (loading) {
     return <div></div>;
@@ -109,24 +92,31 @@ const Sidebar = (props: Props) => {
         </div>
       )}
       <div className="suggestedAccounts">
-        <p className="hide">Suggested accounts</p>{" "}
+        {user && <p className="hide">Suggested accounts</p>}{" "}
         {/*Class hide, hides username in mobile view*/}
-        {SuggestedAccounts.map((item, itemIdx) => {
-          return (
-            <button key={itemIdx}>
-              <Image
-                src={item.picture}
-                alt="profile"
-                className="profileImage"
-              />
-              <div className="hide">
-                {" "}
-                {/*Class hide, hides username in mobile view*/}
-                <p className="username">{item.username}</p>
-              </div>
-            </button>
-          );
-        })}
+        {values &&
+          user &&
+          values
+            .filter((item) => item.uid !== user.uid)
+            .filter((item, itemIdx) => itemIdx < 5)
+            .map((item, itemIdx) => {
+              return (
+                <button key={itemIdx}>
+                  <Image
+                    src={item.photoURL}
+                    alt="profile"
+                    className="profileImage"
+                    width={32}
+                    height={32}
+                  />
+                  <div className="hide">
+                    {" "}
+                    {/*Class hide, hides username in mobile view*/}
+                    <p className="username">{item.displayName}</p>
+                  </div>
+                </button>
+              );
+            })}
       </div>
     </div>
   );

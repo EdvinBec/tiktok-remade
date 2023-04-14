@@ -1,5 +1,5 @@
 //Components
-import React, { useState } from "react";
+import React from "react";
 import { Modal } from "react-overlays";
 import Button from "./Button";
 
@@ -7,8 +7,10 @@ import Button from "./Button";
 import GoogleIcon from "../assets/img/Google.svg";
 
 //Functions
-import { initFirebase } from "../../firebaseApp";
+import { db, initFirebase } from "../../firebaseApp";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 type Props = {
   showModal: boolean;
@@ -20,8 +22,42 @@ const LoginPopup = ({ showModal, handleClose }: Props) => {
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
 
+  const [values, error] = useCollectionData<any>(collection(db, "users"));
+
+  const addUserToDatabase = async (
+    uid: string,
+    displayName: string | null,
+    email: string | null,
+    photoURL: string | null
+  ) => {
+    let isAlreadyRegistered = false;
+
+    values?.forEach((item) => {
+      if (item.uid === uid) {
+        isAlreadyRegistered = true;
+      }
+    });
+
+    if (!isAlreadyRegistered) {
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          uid: uid,
+          displayName: displayName,
+          email: email,
+          photoURL: photoURL,
+        });
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    }
+  };
+
   const signIn = async (provider: any) => {
     const result = await signInWithPopup(auth, provider);
+    const { displayName, uid, photoURL, email } = result.user;
+
+    addUserToDatabase(uid, displayName, email, photoURL);
+
     handleClose();
   };
 
