@@ -45,6 +45,8 @@ const LoginPopup = ({ showModal, handleClose }: Props) => {
           displayName: displayName,
           email: email,
           photoURL: photoURL,
+          likes: 0,
+          followers: 0,
         });
       } catch (error) {
         console.error("Error adding document: ", error);

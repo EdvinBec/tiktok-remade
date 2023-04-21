@@ -17,6 +17,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { db } from "../../firebaseApp";
+import SuggestedAccounts from "@/components/SuggestedAccounts";
 
 type Props = {};
 
@@ -91,33 +92,7 @@ const Sidebar = (props: Props) => {
           />
         </div>
       )}
-      <div className="suggestedAccounts">
-        {user && <p className="hide">Suggested accounts</p>}{" "}
-        {/*Class hide, hides username in mobile view*/}
-        {values &&
-          user &&
-          values
-            .filter((item) => item.uid !== user.uid)
-            .filter((item, itemIdx) => itemIdx < 5)
-            .map((item, itemIdx) => {
-              return (
-                <button key={itemIdx}>
-                  <Image
-                    src={item.photoURL}
-                    alt="profile"
-                    className="profileImage"
-                    width={32}
-                    height={32}
-                  />
-                  <div className="hide">
-                    {" "}
-                    {/*Class hide, hides username in mobile view*/}
-                    <p className="username">{item.displayName}</p>
-                  </div>
-                </button>
-              );
-            })}
-      </div>
+      <SuggestedAccounts user={user} values={values} />
     </div>
   );
 };

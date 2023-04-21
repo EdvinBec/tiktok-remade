@@ -6,6 +6,7 @@ import "@/styles/Button.scss";
 import "@/styles/Sidebar.scss";
 import "@/styles/Sidebar.scss";
 import "@/styles/Modal.scss";
+import "@/styles/ProfileInformationPopup.scss";
 
 //Components
 import type { AppProps } from "next/app";
