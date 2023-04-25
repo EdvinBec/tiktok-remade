@@ -35,7 +35,7 @@ const ProfileInformationPopup = ({ item }: Props) => {
       </div>
       <div className="statistics">
         <label>
-          <span>{item.followers}</span>
+          <span>{item.followersNum}</span>
           Followers
         </label>
         <label>
